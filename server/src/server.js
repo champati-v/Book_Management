@@ -11,7 +11,6 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://book-management-lkf8.onrender.com",
 ];
 app.use(
   cors({
