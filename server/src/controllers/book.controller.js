@@ -96,8 +96,7 @@ const createBook = async (req, res) => {
       !title ||
       !author ||
       !genre ||
-      !publishedYear ||
-      !coverImageUrl
+      !publishedYear
     ) {
       return res.status(400).json({
         success: false,
