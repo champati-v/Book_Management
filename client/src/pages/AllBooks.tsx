@@ -63,7 +63,7 @@ export default function AllBooks() {
     return () => clearTimeout(timeout)
   }, [searchQuery, selectedGenre])
 
-  const genres = useMemo(() => [...new Set(books.map((book) => book.genre))], [books])
+  const genres = useMemo(() => [...new Set((booksCache ?? books).map((book) => book.genre))], [books])
 
   const totalPages = Math.ceil(books.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
@@ -119,7 +119,7 @@ export default function AllBooks() {
             setCurrentPage(1)
           }}
         >
-          <SelectTrigger className="md:w-48">
+          <SelectTrigger className="w-full md:w-48">
             <SelectValue placeholder="All Genres" />
           </SelectTrigger>
           <SelectContent>
@@ -132,7 +132,7 @@ export default function AllBooks() {
           </SelectContent>
         </Select>
 
-        <Button onClick={() => navigate('/add-book')}>+ Add New Book</Button>
+        <Button className="cursor-pointer" onClick={() => navigate('/add-book')}>+ Add New Book</Button>
       </div>
 
       {loading ? (

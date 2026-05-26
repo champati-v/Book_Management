@@ -1,4 +1,4 @@
-import { Bell, Menu, User, LogOut, CircleUserRound } from 'lucide-react'
+import { Bell, Menu, LogOut, CircleUserRound } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import {
   DropdownMenu,
@@ -38,15 +38,25 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant="ghost" size="icon" className="relative" type="button">
+              <Bell className="w-6 h-6" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-72 p-3">
+            <p className="text-sm font-medium text-foreground">Shelf check complete.</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Your library is looking productive today!
+            </p>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button variant="ghost" size="icon" type="button">
-              <CircleUserRound className="w-5 h-5" />
+              <CircleUserRound className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -62,4 +72,3 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
     </nav>
   )
 }
-

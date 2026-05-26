@@ -21,6 +21,7 @@ export default function BookForm({
   submitButtonText = 'Save Book',
 }: BookFormProps) {
   const [genre, setGenre] = useState(initialData?.genre || '')
+  const genreOptions = genre && !GENRES.includes(genre) ? [genre, ...GENRES] : GENRES
 
   const {
     register,
@@ -54,7 +55,7 @@ export default function BookForm({
           id="title"
           placeholder="e.g. Atomic Habits"
           {...register('title', { required: 'Title is required' })}
-          className={errors.title ? 'border-red-500' : ''}
+          className={`mt-1 ${errors.title ? 'border-red-500' : ''}`}
         />
         {errors.title && <p className="text-sm text-red-500 mt-1">{errors.title.message}</p>}
       </div>
@@ -65,7 +66,7 @@ export default function BookForm({
           id="author"
           placeholder="e.g. James Clear"
           {...register('author', { required: 'Author is required' })}
-          className={errors.author ? 'border-red-500' : ''}
+          className={`mt-1 ${errors.author ? 'border-red-500' : ''}`}
         />
         {errors.author && <p className="text-sm text-red-500 mt-1">{errors.author.message}</p>}
       </div>
@@ -77,10 +78,10 @@ export default function BookForm({
             id="genre"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+            className="mt-1 w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
           >
             <option value="">Select genre</option>
-            {GENRES.map((g) => (
+            {genreOptions.map((g) => (
               <option key={g} value={g}>
                 {g}
               </option>
@@ -99,7 +100,7 @@ export default function BookForm({
               required: 'Publication year is required',
               validate: validateYear,
             })}
-            className={errors.publishedYear ? 'border-red-500' : ''}
+            className={`mt-1 ${errors.publishedYear ? 'border-red-500' : ''}`}
           />
           {errors.publishedYear && (
             <p className="text-sm text-red-500 mt-1">{errors.publishedYear.message}</p>
@@ -113,6 +114,7 @@ export default function BookForm({
           id="coverImageUrl"
           placeholder="https://example.com/cover.jpg"
           {...register('coverImageUrl')}
+          className="mt-1"
         />
       </div>
 

@@ -32,11 +32,11 @@ export default function DeleteDialog({
             <AlertTriangle className="w-6 h-6 text-red-600 dark:text-red-400" />
           </div>
         </div>
-        <AlertDialogHeader>
+        <AlertDialogHeader className="items-center text-center">
           <AlertDialogTitle className="text-center">{title}</AlertDialogTitle>
           <AlertDialogDescription className="text-center">
             Are you sure you want to delete <span className="font-semibold">'{bookTitle}'</span>?
-            This action cannot be undone and will permanently remove this record from your library.
+            This will permanently remove this book from your library.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="flex gap-2 justify-end">

@@ -1,4 +1,4 @@
-import { BookOpen, TrendingUp, Users, Grid } from 'lucide-react'
+import { BookOpen, TrendingUp, Grid } from 'lucide-react'
 import StatCard from '../components/StatCard'
 import DashboardBookCard from '../components/books/DashboardBookCard'
 import { useNavigate } from 'react-router-dom'
@@ -58,14 +58,43 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Good morning, Librarian</h1>
+        <h1 className="text-3xl font-bold text-foreground">Hey There!</h1>
         <p className="text-muted-foreground mt-2">Here's what's happening in your library today.</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <StatCard title="Total Books" value={books.length} icon={BookOpen} subtitle="Live catalog size" />
-        <StatCard title="Recently Added" value={recentlyAdded.length} icon={TrendingUp} subtitle="Latest entries" />
-        <StatCard title="Total Genres" value={totalGenres} icon={Grid} subtitle="Current catalog" />
+        <StatCard
+          title="Total Books"
+          value={books.length}
+          icon={BookOpen}
+          subtitle="Live catalog size"
+          accentClassName="bg-blue-100 dark:bg-blue-900/40"
+        />
+        <StatCard
+          title="Recently Added"
+          value={recentlyAdded.length}
+          icon={TrendingUp}
+          subtitle="Latest entries"
+          accentClassName="bg-emerald-100 dark:bg-emerald-900/40"
+        />
+        <div className="hidden lg:block">
+          <StatCard
+            title="Total Genres"
+            value={totalGenres}
+            icon={Grid}
+            subtitle="Current catalog"
+            accentClassName="bg-violet-100 dark:bg-violet-900/40"
+          />
+        </div>
+      </div>
+      <div className="block lg:hidden">
+      <StatCard
+        title="Total Genres"
+        value={totalGenres}
+        icon={Grid}
+        subtitle="Current catalog"
+        accentClassName="bg-violet-100 dark:bg-violet-900/40"
+      />
       </div>
 
       <Card>

@@ -75,7 +75,7 @@ export default function EditBook() {
         className="absolute inset-0 bg-background/40 backdrop-blur-md"
         onClick={() => navigate('/books', { replace: true })}
       />
-      <Card className="relative w-full max-w-2xl border-white/20 bg-background/75 supports-[backdrop-filter]:backdrop-blur-xl shadow-2xl">
+      <Card className="relative w-full max-w-2xl border-white/20 bg-background/75 supports-backdrop-filter:backdrop-blur-xl shadow-2xl">
         <CardHeader className="flex flex-row items-start justify-between gap-4">
           <div>
             <CardTitle>Edit Book</CardTitle>

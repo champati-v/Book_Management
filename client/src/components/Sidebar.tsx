@@ -8,6 +8,8 @@ interface SidebarProps {
   onClose?: () => void
 }
 
+const APP_LOGO = '/book.png'
+
 export default function Sidebar({ onClose }: SidebarProps) {
   const location = useLocation()
   const { logout } = useAuth()
@@ -32,9 +34,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
     <div className="flex flex-col h-full">
       <div className="flex items-center justify-between p-4 md:p-4 border-b border-border">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-            <BookOpen className="w-5 h-5 text-primary" />
-          </div>
+          <img src={APP_LOGO} alt="Book Vault logo" className="h-8 w-8 object-cover" />
           <h1 className="font-semibold text-lg">BookVault</h1>
         </div>
         {onClose && (
@@ -67,7 +67,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       </nav>
 
       <div className="p-4 border-t border-border">
-        <Button variant="outline" className="w-full justify-start gap-2" onClick={handleLogout}>
+        <Button variant="destructive" className="w-full justify-start gap-2 cursor-pointer" onClick={handleLogout}>
           <LogOut className="w-4 h-4" />
           <span>Logout</span>
         </Button>
