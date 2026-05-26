@@ -40,6 +40,19 @@ export default function BookForm({
     return true
   }
 
+  const validateCoverImageUrl = (value?: string) => {
+    if (!value) {
+      return true
+    }
+
+    try {
+      new URL(value)
+      return true
+    } catch {
+      return 'Please enter a valid URL.'
+    }
+  }
+
   const handleFormSubmit = (data: BookFormData) => {
     if (!genre) {
       return
@@ -113,9 +126,12 @@ export default function BookForm({
         <Input
           id="coverImageUrl"
           placeholder="https://example.com/cover.jpg"
-          {...register('coverImageUrl')}
-          className="mt-1"
+          {...register('coverImageUrl', { validate: validateCoverImageUrl })}
+          className={`mt-1 ${errors.coverImageUrl ? 'border-red-500' : ''}`}
         />
+        {errors.coverImageUrl && (
+          <p className="text-sm text-red-500 mt-1">{errors.coverImageUrl.message}</p>
+        )}
       </div>
 
       <div className="flex gap-3 pt-4">

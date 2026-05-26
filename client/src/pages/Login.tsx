@@ -77,9 +77,7 @@ export default function Login() {
       <div className="flex items-center justify-center p-6 sm:p-10 lg:p-12">
         <div className="w-full max-w-md space-y-6">
           <div className="lg:hidden flex items-center gap-3">
-            <div className="h-11 w-11 rounded-xl overflow-hidden ring-1 ring-primary/20 bg-background">
-              <img src={APP_LOGO} alt="Book Vault logo" className="h-full w-full object-cover" />
-            </div>
+            <img src={APP_LOGO} alt="Book Vault logo" className="h-12 w-12 object-cover" />
             <div>
               <h1 className="text-lg font-semibold text-foreground">Book Vault</h1>
               <p className="text-xs text-muted-foreground">Manage your books seamlessly</p>
@@ -139,7 +137,7 @@ export default function Login() {
 
               <p className="text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{' '}
-                <Link to="/register" className="font-medium text-primary hover:underline">
+                <Link to="/register" className="underline font-medium text-primary hover:underline">
                   Register
                 </Link>
               </p>
