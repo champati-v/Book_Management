@@ -11,6 +11,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://book-management-nexgensis.vercel.app"
 ];
 app.use(
   cors({
