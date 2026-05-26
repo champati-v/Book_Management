@@ -1,4 +1,4 @@
-import { Book as BookIcon, Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
@@ -10,6 +10,8 @@ interface CompactBookCardProps {
   onDelete?: (id: string) => void;
   onEdit?: (id: string) => void;
 }
+
+const DEFAULT_BOOK_COVER_IMAGE = "/book_cover.jpg";
 
 const getGenreBadgeClassName = (genre: string) => {
   const key = genre.trim().toLowerCase();
@@ -58,22 +60,24 @@ export default function CompactBookCard({
               isImageLoaded ? "opacity-0" : "opacity-100"
             }`}
           >
-            <BookIcon className="absolute h-16 w-16 text-muted-foreground" />
-          </div>
-          {book.coverImageUrl ? (
             <img
-              src={book.coverImageUrl}
-              alt={book.title}
-              loading="lazy"
-              decoding="async"
-              fetchPriority="low"
-              onLoad={() => setIsImageLoaded(true)}
-              onError={() => setIsImageLoaded(false)}
-              className={`block h-full w-full object-cover transition-all duration-300 group-hover:scale-105 ${
-                isImageLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              src={DEFAULT_BOOK_COVER_IMAGE}
+              alt="Default book cover"
+              className="block h-full w-full object-cover"
             />
-          ) : null}
+          </div>
+          <img
+            src={book.coverImageUrl || DEFAULT_BOOK_COVER_IMAGE}
+            alt={book.title}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            onLoad={() => setIsImageLoaded(true)}
+            onError={() => setIsImageLoaded(false)}
+            className={`block h-full w-full object-cover transition-all duration-300 group-hover:scale-105 ${
+              isImageLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          />
         </div>
       </div>
 

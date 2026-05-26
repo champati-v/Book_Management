@@ -1,4 +1,3 @@
-import { Book as BookIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Card } from '../ui/card'
 import { Badge } from '../ui/badge'
@@ -9,7 +8,7 @@ interface DashboardBookCardProps {
   onClick?: (id: string) => void
 }
 
-const DEFAULT_BOOK_COVER_IMAGE = '/default-book-cover.png'
+const DEFAULT_BOOK_COVER_IMAGE = '/book_cover.jpg'
 
 const getGenreBadgeClassName = (genre: string) => {
   const key = genre.trim().toLowerCase()
@@ -55,7 +54,13 @@ export default function DashboardBookCard({ book, onClick }: DashboardBookCardPr
               isImageLoaded ? 'opacity-0' : 'opacity-100'
             }`}
           >
-            <BookIcon className="h-8 w-8 text-muted-foreground" />
+            {!book.coverImageUrl ? (
+              <img
+                src={DEFAULT_BOOK_COVER_IMAGE}
+                alt="Default book cover"
+                className="block h-full w-full object-cover"
+              />
+            ) : null}
           </div>
           <img
             src={book.coverImageUrl || DEFAULT_BOOK_COVER_IMAGE}
